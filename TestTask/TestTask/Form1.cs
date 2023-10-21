@@ -67,6 +67,24 @@ namespace TestTask
             RefreshGrid();
         }
 
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+            string str = "";
+            if (textBox8.Text.Length > 0)
+            {
+                str = $"Name LIKE '%{textBox8.Text}%'";
+            }
+            if (textBox9.Text.Length > 0)
+            {
+                if (textBox8.Text.Length > 0)
+                {
+                    str += " AND ";
+                }
+                str += $"Number LIKE '%{textBox9.Text}%'";
+            }
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = str;
+        }
+
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
             string str = "";
